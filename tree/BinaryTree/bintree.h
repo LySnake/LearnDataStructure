@@ -22,8 +22,6 @@ void PrintTreeForDLR(Tree*);
 void PrintTreeForLDR(Tree*);
 void PrintTreeForLRD(Tree*);
 
-
-
 #endif
 
 
