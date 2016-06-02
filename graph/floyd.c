@@ -1,11 +1,15 @@
-#define MAXINDEX   1024
+#define MAXINDEX   1024   //最大节点数
 typedef struct mgraph
 {
-    int G[MAXINDEX][MAXINDEX];
-    int iNodeNum;
+    int G[MAXINDEX][MAXINDEX];  //邻接矩阵表示图
+    int iNodeNum;               //实际节点数
 
 }MGraph;
-
+/*
+Graph :邻接矩阵表示的图
+D：     输出多源节点最短路径的图
+path:   二节点间最短路径，可用递归打印输出
+*/
 int Floyd(const MGraph *Graph, WeightTye D[][MAXINDEX], Vertex path[][MAXINDEX])
 {
     Verter i, j, k ;
@@ -24,8 +28,6 @@ int Floyd(const MGraph *Graph, WeightTye D[][MAXINDEX], Vertex path[][MAXINDEX])
             {
                 if( D[i][k] + D[k][j] < D[i][j])
                     D[i][j] = D[i][k] + D[k][j];
-                if(i == j && D[i][j] < 0)
-                    return -1;
                 path[i][j] = k;
             }
 
