@@ -6,9 +6,8 @@
 typedef int ElementType;
 
 
-void Merge(ElementType *pSrc, ElementType *pDest,int iLeftIndex, int iRightIndex)
+void Merge(ElementType *pSrc, ElementType *pDest,int iLeftIndex, int iMiddle, int iRightIndex)
 {
-    int iMiddle = (iLeftIndex + iRightIndex) / 2;
     int i = iLeftIndex;
     int z = iLeftIndex;
     int j = iMiddle + 1;
@@ -47,26 +46,25 @@ void MergeSort( ElementType Data[], int n)
 
     if(pData)
     {
-        for(iStep = 2; iStep >> 1 < n ; iStep <<= 1)
+        for(iStep = 2; iStep < n ; iStep <<= 1)
         {
             for(iLeftIndex = 0, iRightIndex = iLeftIndex + iStep; iRightIndex < n ; iLeftIndex = iRightIndex, iRightIndex += iStep)
             {
-                Merge(pCopyArr1, pCopyArr2, iLeftIndex, iRightIndex - 1);
+                Merge(pCopyArr1, pCopyArr2, iLeftIndex, (iLeftIndex + iRightIndex - 1) / 2, iRightIndex - 1);
             }
-            Merge(pCopyArr1, pCopyArr2, iLeftIndex, n - 1);
+            Merge(pCopyArr1, pCopyArr2, iLeftIndex, (iLeftIndex + n - 1) / 2, n - 1);
 
             pData = pCopyArr1;
             pCopyArr1 = pCopyArr2;
             pCopyArr2 = pData;
         }
-        //todo
-        Merge(pCopyArr1, pCopyArr2, iLeftIndex, n - 1);
+        Merge(pCopyArr1, pCopyArr2, 0, iLeftIndex - 1, n - 1);
     }
     else
     {
         printf("Out of memory!");
     }
-    if(pCopyArr2 == Data )
+    if(pCopyArr2 != Data )
     {
         memcpy(pCopyArr2, pCopyArr1, sizeof(ElementType) * n);
     }
