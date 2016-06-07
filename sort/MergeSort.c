@@ -5,7 +5,16 @@
 
 typedef int ElementType;
 
-
+//归并排序:复杂度O（nlog(n)），额外空间sizeof(n * ElenmentType)
+//算法说明：假设二个子Arr是有序的，那么，左子Arr和右Arr都从第一个单元开始，相比较，哪个最小就放入目标数组中并准备下一个单元比较。
+/**********************************************************
+*函数功能:归并二个相邻子Arr
+* pSrc:数据源
+* pDest:目标存储区
+* iLeftIndex:相邻子Arr的最左单元
+* iRightIndex:相邻子Arr的最右单元
+* iMiddle:相邻子Arr的分界元
+**********************************************************/
 void Merge(ElementType *pSrc, ElementType *pDest,int iLeftIndex, int iMiddle, int iRightIndex)
 {
     int i = iLeftIndex;
