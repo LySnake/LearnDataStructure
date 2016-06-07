@@ -1,6 +1,7 @@
 #include<stdio.h>
 #define Copmare(i,j)  ((i) > (j)? 1 : 0)
 typedef int ElementType;
+//冒泡算法:复杂度O（n^2），无额外空间
 void BubbleSort(ElementType Data[], int n)
 {
     int i = 0;
