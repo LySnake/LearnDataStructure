@@ -1,6 +1,8 @@
 #include<stdio.h>
 #define Compare(i,j) ((i) > (j) ? 1: 0)
 typedef int ElementType;
+//插入排序:复杂度O（n^2），无额外空间开支
+//模拟抓牌
 void InsertionSort(ElementType Data[], int n)
 {
     int i;
